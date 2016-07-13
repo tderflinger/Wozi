@@ -1,0 +1,15 @@
+<ion-view view-title="Vocabularies">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="voc in vocs track by $index" type="item-text-wrap" href="#/tab/vocs/{{voc.id}}">
+        <h2>{{voc.source}}</h2>
+        <p>{{voc.dest}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(voc)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
