@@ -1,0 +1,27 @@
+<ion-view view-title="Learn" ng-controller="LearnCtrl">
+    <ion-content class="padding">
+        <select ng-model="learn.cat" value="{{learn.cat}}">
+            <option value="0" selected>Lektion 1</option>
+            <option value="1">Lektion 2</option>
+            <option value="2">Lektion 3</option>
+            <option value="3">Lektion 4</option>
+            <option value="4">Lektion 5</option>
+            <option value="5">Lektion 6</option>
+            <option value="6">Lektion 7</option>
+            <option value="7">Lektion 8</option>
+            <option value="8">Lektion 9</option>
+            <option value="9">Lektion 10</option>
+        </select>
+        <br/>
+        <br/>
+        <h2>{{ learnVoc }}</h2>
+        <br/>
+        <br/>
+        <button class="button button-dark" ng-click="turn();">
+            Turn
+        </button>
+        <button class="button button-dark" ng-click="next();">
+            Next
+        </button>
+    </ion-content>
+</ion-view>

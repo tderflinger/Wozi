@@ -22,8 +22,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
         }
 
         console.log("before voc.db");
-        db = $cordovaSQLite.openDB({name: "voc.db", location:"default"});
-        $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS vocabulary (id integer primary key, source text, dest text, cat text)");
+        db = $cordovaSQLite.openDB({name: "vocs.db", location:"default"});
+        $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS vocabulary (id integer primary key, source text, dest text, cat integer)");
         console.log("afetr voc.db");
     });
 })
@@ -77,12 +77,12 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
             }
         })
 
-    .state('tab.account', {
-        url: '/account',
+    .state('tab.learn', {
+        url: '/learn',
         views: {
-            'tab-account': {
-                templateUrl: 'templates/tab-account.html',
-                controller: 'AccountCtrl'
+            'tab-learn': {
+                templateUrl: 'templates/tab-learn.html',
+                controller: 'LearnCtrl'
             }
         }
     });

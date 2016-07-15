@@ -3,10 +3,17 @@
   'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
+
+  ng-selected="selectedCat(voc.cat, cat.id);"
 -->
 <ion-view view-title="{{voc.source}}" ng-controller="VocsCtrl">
     <ion-content class="padding">
         <div class="list">
+            <select ng-model="selected" ng-options="cat as cat.name for cat in cats track by cat.id">
+<!--                <option ng-repeat="cat in cats" ng-selected="selectedCat(voc.cat, cat.id);" id="{{cat.id}}" value="{{cat.id}}">{{cat.name}}</option> -->
+            </select>
+            <br/>
+            <br/>
             <label class="item item-input">
                 <input type="text" placeholder="Romana" ng-model="voc.source" value="{{voc.source}}">
             </label>
@@ -14,7 +21,7 @@
                 <input type="text" placeholder="Deutsch" ng-model="voc.dest" value="{{voc.dest}}">
             </label>
         </div>
-        <button class="button button-dark" ng-click="add(voc);">
+        <button class="button button-dark" ng-click="add(voc, selected);">
             Add
         </button>
     </ion-content>
