@@ -1,16 +1,7 @@
-<!--
-  This template loads for the 'tab.friend-detail' state (app.js)
-  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
-  The FriendsCtrl pulls data from the Friends service (service.js)
-  The Friends service returns an array of friend data
-
-  ng-selected="selectedCat(voc.cat, cat.id);"
--->
 <ion-view view-title="{{voc.source}}" ng-controller="VocsCtrl">
     <ion-content class="padding">
         <div class="list">
             <select ng-model="selected" ng-options="cat as cat.name for cat in cats track by cat.id">
-<!--                <option ng-repeat="cat in cats" ng-selected="selectedCat(voc.cat, cat.id);" id="{{cat.id}}" value="{{cat.id}}">{{cat.name}}</option> -->
             </select>
             <br/>
             <br/>

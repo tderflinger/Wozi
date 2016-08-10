@@ -19,11 +19,10 @@ angular.module('starter.services', ['ngCordova'])
                 dest: 'Haus',
                 cat: 0
             }];
+
             var query = "SELECT id, source, dest, cat FROM vocabulary;";
             $cordovaSQLite.execute(db, query).then(function(res) {
                 if (res.rows.length > 0) {
-                    console.log("ROws length:" + res.rows.length);
-
                     for (var i = 0; i < res.rows.length; i++) {
                         console.log("Row: " + res.rows.item(i).source);
                         vocs.push({ id: res.rows.item(i).id + 1, source: res.rows.item(i).source, dest: res.rows.item(i).dest, cat: res.rows.item(i).cat });
@@ -39,41 +38,44 @@ angular.module('starter.services', ['ngCordova'])
 
             return vocs;
         },
+        
         cats: function() {
             var cats = [{
                 id: 0,
-                name: "Lektion 1"
+                name: "Lesson 1"
             }, {
                 id: 1,
-                name: "Lektion 2"
+                name: "Lesson 2"
             }, {
                 id: 2,
-                name: "Lektion 3"
+                name: "Lesson 3"
             }, {
                 id: 3,
-                name: "Lektion 4"
+                name: "Lesson 4"
             }, {
                 id: 4,
-                name: "Lektion 5"
+                name: "Lesson 5"
             },{
                 id: 5,
-                name: "Lektion 6"
+                name: "Lesson 6"
             },{
                 id: 6,
-                name: "Lektion 7"
+                name: "Lesson 7"
             },{
                 id: 7,
-                name: "Lektion 8"
+                name: "Lesson 8"
             },{
                 id: 8,
-                name: "Lektion 9"
+                name: "Lesson 9"
             }];
 
             return cats;
         },
+
         remove: function(voc) {
             vocs.splice(vocs.indexOf(voc), 1);
         },
+        
         get: function(vocId) {
             for (var i = 0; i < vocs.length; i++) {
                 if (vocs[i].id === parseInt(vocId)) {
@@ -82,9 +84,8 @@ angular.module('starter.services', ['ngCordova'])
             }
             return null;
         },
+        
         save: function(voc) {
-            console.log("inside save!" + voc.source);
-
             for (var i = 0; i < vocs.length; i++) {
                 if (vocs[i].id === parseInt(voc.id)) {
                     vocs[i].source = voc.source;
@@ -93,6 +94,7 @@ angular.module('starter.services', ['ngCordova'])
                 }
             }
         },
+        
         insert: function(voc) {
             var query = "INSERT INTO vocabulary (source, dest, cat) VALUES (?, ?, ?)";
             $cordovaSQLite.execute(db, query, [voc.source, voc.dest, voc.cat]).then(function(res) {
@@ -103,8 +105,7 @@ angular.module('starter.services', ['ngCordova'])
 
             counter++;
             voc.id = counter;
-            vocs.push(voc);
-            //refreshItems(); 
+            vocs.push(voc); 
             console.log("end of insert----");
         }
 

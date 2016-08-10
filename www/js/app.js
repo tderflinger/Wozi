@@ -1,10 +1,7 @@
-// Ionic Starter App
+// Wozi App
+// ========
+// Author: Thomas Derflinger
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter.services'])
 
 .run(function($ionicPlatform, $cordovaSQLite) {
@@ -21,10 +18,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
             StatusBar.styleDefault();
         }
 
-        console.log("before voc.db");
         db = $cordovaSQLite.openDB({name: "vocs.db", location:"default"});
         $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS vocabulary (id integer primary key, source text, dest text, cat integer)");
-        console.log("afetr voc.db");
+        console.log("aftr voc.db");
     });
 })
 
@@ -46,7 +42,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
     })
 
     // Each tab has its own nav history stack:
-
     .state('tab.dash', {
         url: '/dash',
         views: {
@@ -62,7 +57,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
             views: {
                 'tab-chats': {
                     cache: false,
-                    templateUrl: 'templates/tab-chats.html',
+                    templateUrl: 'templates/tab-vocs.html',
                     controller: 'VocsCtrl'
                 }
             }
@@ -71,8 +66,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
             url: '/vocs/:chatId',
             views: {
                 'tab-chats': {
-                    templateUrl: 'templates/chat-detail.html',
-                    controller: 'ChatDetailCtrl'
+                    templateUrl: 'templates/voc-detail.html',
+                    controller: 'VocDetailCtrl'
                 }
             }
         })
